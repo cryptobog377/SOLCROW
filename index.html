@@ -1,214 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOLCROW — The Contract Is the Guarantee</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Inter:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
 
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(circle at 50% 50%, #020202 0%, #000 100%);
-      font-family: 'Inter', sans-serif;
-      color: #e0e0e0;
-      overflow: hidden;
-      position: relative;
+      background: linear-gradient(180deg, #000000 0%, #020512 100%);
+      color: #d9f7ff;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
     }
 
-    /* === Линии доверия === */
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
+    header {
       text-align: center;
-      padding-top: 80px;
+      padding: 80px 20px 60px;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(0,255,255,0.1), transparent 60%);
     }
 
-    /* === Логотип === */
     h1 {
-      font-family: 'Orbitron', sans-serif;
       font-size: 4rem;
       letter-spacing: 3px;
-      background: linear-gradient(90deg, #00ffcc, #0077ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 0 20px rgba(0,255,255,0.3);
+      color: #00fff2;
+      font-weight: 800;
+      text-shadow: 0 0 20px rgba(0,255,255,0.5);
     }
 
     h2 {
-      color: #00e0b5;
-      font-size: 1.2rem;
-      margin-bottom: 25px;
-      text-shadow: 0 0 10px rgba(0,255,200,0.2);
+      color: #66f2ff;
+      font-size: 1.3rem;
+      margin-top: 10px;
+      font-weight: 400;
+      opacity: 0.85;
     }
 
     .ca-box {
       font-family: monospace;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(0,255,200,0.2);
-      border-radius: 10px;
-      padding: 12px 28px;
-      color: #00ffcc;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(0,255,255,0.25);
+      border-radius: 12px;
+      padding: 12px 24px;
+      color: #00ffe6;
       font-size: 0.9rem;
-      box-shadow: 0 0 15px rgba(0,255,255,0.1);
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
       width: fit-content;
-      margin: 0 auto 15px;
+      margin: 20px auto;
     }
 
     .btn {
       display: inline-block;
-      background: linear-gradient(90deg, #00ffff, #0077ff);
+      background: linear-gradient(90deg, #00ffff, #0055ff);
       color: #000;
       font-weight: 700;
       text-decoration: none;
       padding: 12px 34px;
-      border-radius: 30px;
+      border-radius: 25px;
       box-shadow: 0 0 25px rgba(0,255,255,0.4);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px rgba(0,255,255,0.6);
+      box-shadow: 0 0 40px rgba(0,255,255,0.6);
     }
 
-    /* === Текстовые блоки === */
-    .text-section {
-      position: relative;
-      margin-top: 420px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 40px;
-      z-index: 5;
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
     }
 
-    .text-block {
-      background: rgba(255,255,255,0.05);
+    .card {
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(0,255,255,0.2);
-      max-width: 850px;
-      padding: 30px 45px;
-      border-radius: 16px;
-      box-shadow: 0 0 25px rgba(0,255,255,0.1);
-      color: #a8f5ff;
+      border-radius: 14px;
+      padding: 30px;
+      box-shadow: 0 0 30px rgba(0,255,255,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(6px);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 40px rgba(0,255,255,0.25);
+    }
+
+    .card h3 {
+      color: #00ffe0;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.3);
+    }
+
+    .card p {
       font-size: 1rem;
+      color: #b7eaff;
       line-height: 1.7;
-      backdrop-filter: blur(4px);
-      transition: 0.4s;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeUp 1.5s forwards;
     }
 
-    .text-block:nth-child(2) { animation-delay: 0.4s; }
-    .text-block:nth-child(3) { animation-delay: 0.8s; }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      color: #88eaff;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(0,255,255,0.1);
     }
 
-    .text-block h3 {
-      font-family: 'Orbitron', sans-serif;
-      color: #00ffee;
-      font-size: 1.3rem;
-      margin-top: 0;
-      text-shadow: 0 0 10px rgba(0,255,255,0.4);
-    }
   </style>
 </head>
 <body>
-  <canvas id="network"></canvas>
-
-  <div class="content">
+  <header>
     <h1>SOLCROW</h1>
     <h2>The Contract Is the Guarantee</h2>
     <div class="ca-box">CA: SOON</div>
     <a href="https://x.com/i/communities/1988030401877541331" target="_blank" class="btn">Join X Community</a>
-  </div>
+  </header>
 
-  <div class="text-section">
-    <div class="text-block">
-      <h3>Trade Without Trust</h3>
-      <p>SOLCROW removes the need for intermediaries. Trade any on-chain asset — tokens, NFTs, or memes — directly between users. The only guarantee you need is code.</p>
+  <main>
+    <div class="card">
+      <h3>Trade Anything</h3>
+      <p>From SOL to NFTs to memecoins — trade directly with anyone, anywhere. SOLCROW removes friction and brings liquidity to real peer-to-peer markets.</p>
     </div>
-    <div class="text-block">
-      <h3>Smart Escrow Mechanism</h3>
-      <p>Each trade is backed by an automated escrow contract. Both sides deposit their assets; the deal completes only when both confirm. No third parties. No risk.</p>
+
+    <div class="card">
+      <h3>Smart Escrow Core</h3>
+      <p>Every deal is secured by an immutable escrow contract. Assets stay locked until both parties fulfill their side — no middlemen, no custody.</p>
     </div>
-    <div class="text-block">
-      <h3>Transparent & Secure</h3>
-      <p>Every transaction is visible, every rule immutable. On Solana, speed meets integrity — making SOLCROW the safest place to trade peer-to-peer.</p>
+
+    <div class="card">
+      <h3>Transparent Agreements</h3>
+      <p>Every transaction and condition is visible on-chain. No hidden rules, no fine print — only code that enforces fairness automatically.</p>
     </div>
-  </div>
 
-  <script>
-    const canvas = document.getElementById('network');
-    const ctx = canvas.getContext('2d');
-    let width, height, nodes;
+    <div class="card">
+      <h3>Instant Settlements</h3>
+      <p>Deals finalize instantly once both sides confirm. SOLCROW merges security with Solana speed — so escrow feels as fast as swapping.</p>
+    </div>
 
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      initNodes();
-    }
+    <div class="card">
+      <h3>Trustless Reputation</h3>
+      <p>Reputation on SOLCROW is built by code, not opinion. Each completed trade enhances your profile on-chain — pure proof of reliability.</p>
+    </div>
 
-    window.addEventListener('resize', resize);
-    resize();
+    <div class="card">
+      <h3>$TRST — Powering the Network</h3>
+      <p>$TRST is the utility token behind every transaction, powering fees and rewards. The more trustless trades you complete, the more you earn.</p>
+    </div>
+  </main>
 
-    function initNodes() {
-      nodes = [];
-      for (let i = 0; i < 40; i++) {
-        nodes.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          dx: (Math.random() - 0.5) * 0.8,
-          dy: (Math.random() - 0.5) * 0.8,
-        });
-      }
-    }
-
-    function draw() {
-      ctx.clearRect(0, 0, width, height);
-      ctx.strokeStyle = 'rgba(0,255,255,0.15)';
-      ctx.lineWidth = 1;
-      for (let i = 0; i < nodes.length; i++) {
-        const a = nodes[i];
-        for (let j = i + 1; j < nodes.length; j++) {
-          const b = nodes[j];
-          const dist = Math.hypot(a.x - b.x, a.y - b.y);
-          if (dist < 180) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y);
-            ctx.lineTo(b.x, b.y);
-            ctx.stroke();
-          }
-        }
-      }
-      nodes.forEach(n => {
-        n.x += n.dx;
-        n.y += n.dy;
-        if (n.x < 0 || n.x > width) n.dx *= -1;
-        if (n.y < 0 || n.y > height) n.dy *= -1;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,255,0.5)';
-        ctx.fill();
-      });
-      requestAnimationFrame(draw);
-    }
-
-    draw();
-  </script>
+  <footer>
+    © 2025 SOLCROW • Decentralized Escrow Network on Solana
+  </footer>
 </body>
 </html>
