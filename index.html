@@ -5,35 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOLCROW — Autonomous OTC Network</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,800&family=Outfit:wght@400;600&display=swap');
 
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: linear-gradient(180deg, #000000 0%, #040815 100%);
-      color: #d9f7ff;
+      background: linear-gradient(180deg, #0d0500 0%, #1a0b00 100%);
+      color: #2a1a00;
       font-family: 'Outfit', sans-serif;
       overflow-x: hidden;
     }
 
     header {
       text-align: center;
-      padding: 90px 20px 40px;
+      padding: 90px 20px 50px;
       position: relative;
-      background: radial-gradient(circle at center, rgba(0,255,255,0.07), transparent 60%);
+      background: radial-gradient(circle at center, rgba(255,150,0,0.1), transparent 60%);
     }
 
     h1 {
-      font-size: 4rem;
-      letter-spacing: 3px;
-      color: #00fff2;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
       font-weight: 800;
-      text-shadow: 0 0 20px rgba(0,255,255,0.5);
+      font-size: 4.2rem;
+      color: #ffb347;
+      text-shadow: 0 0 20px rgba(255,180,60,0.4);
     }
 
     h2 {
-      color: #66f2ff;
+      color: #ffcc80;
       font-size: 1.3rem;
       font-weight: 400;
       margin-top: 10px;
@@ -42,43 +43,43 @@
     }
 
     .description {
-      max-width: 700px;
+      max-width: 720px;
       margin: 40px auto 20px;
-      color: #aeefff;
+      color: #ffe5b4;
       font-size: 1.1rem;
       line-height: 1.7;
-      opacity: 0.9;
-      text-shadow: 0 0 10px rgba(0,255,255,0.1);
+      opacity: 0.95;
+      text-shadow: 0 0 12px rgba(255,200,100,0.1);
     }
 
     .ca-box {
       font-family: monospace;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(0,255,255,0.25);
+      background: rgba(255,180,50,0.08);
+      border: 1px solid rgba(255,200,80,0.25);
       border-radius: 12px;
       padding: 12px 24px;
-      color: #00ffe6;
+      color: #ffb84d;
       font-size: 0.9rem;
-      box-shadow: 0 0 10px rgba(0,255,255,0.1);
+      box-shadow: 0 0 10px rgba(255,170,50,0.15);
       width: fit-content;
       margin: 20px auto;
     }
 
     .btn {
       display: inline-block;
-      background: linear-gradient(90deg, #00ffff, #0055ff);
+      background: linear-gradient(90deg, #ff9900, #ffcc66);
       color: #000;
       font-weight: 700;
       text-decoration: none;
       padding: 12px 34px;
       border-radius: 25px;
-      box-shadow: 0 0 25px rgba(0,255,255,0.4);
+      box-shadow: 0 0 25px rgba(255,170,60,0.4);
       transition: all 0.3s ease;
     }
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 40px rgba(0,255,255,0.6);
+      box-shadow: 0 0 40px rgba(255,200,100,0.6);
     }
 
     main {
@@ -91,39 +92,40 @@
     }
 
     .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(0,255,255,0.2);
+      background: rgba(255,230,200,0.05);
+      border: 1px solid rgba(255,200,120,0.25);
       border-radius: 14px;
       padding: 30px;
-      box-shadow: 0 0 30px rgba(0,255,255,0.08);
+      box-shadow: 0 0 30px rgba(255,170,70,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       backdrop-filter: blur(6px);
     }
 
     .card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 0 40px rgba(0,255,255,0.25);
+      box-shadow: 0 0 40px rgba(255,200,120,0.25);
     }
 
     .card h3 {
-      color: #00ffe0;
+      color: #ffb84d;
       font-size: 1.4rem;
       margin-bottom: 15px;
-      text-shadow: 0 0 10px rgba(0,255,255,0.3);
+      text-shadow: 0 0 8px rgba(255,200,100,0.3);
     }
 
     .card p {
       font-size: 1rem;
-      color: #b7eaff;
+      color: #2a1a00;
       line-height: 1.7;
+      font-weight: 500;
     }
 
     footer {
       text-align: center;
       padding: 60px 20px;
-      color: #88eaff;
+      color: #ffcc80;
       font-size: 0.9rem;
-      border-top: 1px solid rgba(0,255,255,0.1);
+      border-top: 1px solid rgba(255,200,100,0.1);
     }
 
   </style>
@@ -133,8 +135,9 @@
     <h1>SOLCROW</h1>
     <h2>Autonomous OTC Network</h2>
     <div class="description">
-      SOLCROW is a fully autonomous OTC marketplace built on Solana — enabling peer-to-peer exchange of any digital asset without intermediaries, custody, or permission.  
-      Smart contracts handle escrow, settlement, and verification — so trust is replaced by code.
+      The first autonomous OTC marketplace on Solana.  
+      Peer-to-peer asset exchange powered by smart contracts — no intermediaries, no custody, no permissions.  
+      Every trade executes automatically, securely, and transparently.
     </div>
     <div class="ca-box">CA: SOON</div>
     <a href="https://x.com/i/communities/1988030401877541331" target="_blank" class="btn">Join X Community</a>
@@ -143,33 +146,32 @@
   <main>
     <div class="card">
       <h3>Autonomous by Design</h3>
-      <p>No admins, no approvals. Every deal executes through immutable smart contracts — the market runs itself, transparently and permissionlessly.</p>
+      <p>Decentralized from inception — SOLCROW operates without servers, admins, or approvals. The code is the only authority.</p>
     </div>
 
     <div class="card">
-      <h3>OTC, Reimagined</h3>
-      <p>SOLCROW replaces the traditional over-the-counter desk with a decentralized system. Trades settle instantly on Solana — fast, secure, and final.</p>
+      <h3>OTC Reinvented</h3>
+      <p>Traditional desks rely on trust. SOLCROW replaces that with cryptographic proof. Set your terms and execute instantly.</p>
     </div>
 
     <div class="card">
-      <h3>Smart Escrow Engine</h3>
-      <p>Assets are locked in escrow until both sides fulfill their obligations. No human oversight, no room for error — just verifiable fairness.</p>
+      <h3>Smart Escrow Layer</h3>
+      <p>Funds stay locked until both sides complete the deal. No intermediaries, no risk, just verifiable autonomy.</p>
     </div>
 
     <div class="card">
-      <h3>Peer-to-Peer Liquidity</h3>
-      <p>Users create and accept offers directly. SOLCROW connects liquidity across wallets, making OTC truly decentralized for the first time.</p>
+      <h3>Peer Liquidity</h3>
+      <p>Every user can become a market. SOLCROW links wallets directly — turning the network itself into the marketplace.</p>
     </div>
 
     <div class="card">
-      <h3>Immutable Transparency</h3>
-      <p>Every condition, transaction, and confirmation lives on-chain — visible to all, editable by none.  
-      The contract is the guarantee.</p>
+      <h3>Transparency by Default</h3>
+      <p>Every rule, transaction, and confirmation lives on-chain — immutable and visible to everyone.</p>
     </div>
 
     <div class="card">
-      <h3>Solana Speed. Zero Custody.</h3>
-      <p>By leveraging Solana’s low fees and instant finality, SOLCROW offers trustless settlements faster than any centralized platform ever could.</p>
+      <h3>Solana-Powered Settlements</h3>
+      <p>Instant, low-fee trades executed on Solana’s lightning network layer — faster than any centralized OTC ever built.</p>
     </div>
   </main>
 
